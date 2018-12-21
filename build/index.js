@@ -10,10 +10,8 @@ module.exports = function (RED) {
         var client = new node_sonos_voice_streaming_1.client(config.url);
         console.log('connecting to' + config.url);
         client.on(node_sonos_voice_streaming_1.eventNames.audioLiveStream.ready, function () {
-            console.log("ready");
             var compandArgs = 'compand 0.3,1 6:-10 15';
             if (fs_1.existsSync('/tmp/noise.prof')) {
-                console.log('hello');
                 client.record(("noisered /tmp/noise.prof 0.21 " + compandArgs).split(' '));
             }
             else {
@@ -38,7 +36,6 @@ module.exports = function (RED) {
                 client.startStream();
             }
             else {
-                console.log("stop");
                 client.recordProcess && client.recordProcess.kill('SIGTERM');
             }
         });

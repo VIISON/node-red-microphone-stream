@@ -11,10 +11,8 @@ module.exports = function(RED) {
         const client = new VoiceStreamingClient(config.url)
         console.log('connecting to' + config.url)
         client.on(eventNames.audioLiveStream.ready, () => {
-            console.log("ready")
             let compandArgs = 'compand 0.3,1 6:-10 15'
             if (existsSync('/tmp/noise.prof')) {
-                console.log('hello')
                 client.record(`noisered /tmp/noise.prof 0.21 ${compandArgs}`.split(' '))
             } else {
                 client.record(compandArgs.split(' '))
@@ -37,9 +35,9 @@ module.exports = function(RED) {
                         spawn('sox', '/tmp/noise-audio.wav -n noiseprof /tmp/noise.prof'.split(' '))
                     });
                 }, 500)
+
                 client.startStream()
             } else {
-                console.log("stop")
                 client.recordProcess && client.recordProcess.kill('SIGTERM');
             }
         })
