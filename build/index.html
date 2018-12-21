@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    RED.nodes.registerType('pickware-mic-stream',{
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            url: { required: true }
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name || "Stream Microphone";
+        },
+    });
+</script>
+
+<script type="text/x-red" data-template-name="pickware-mic-stream">
+    <div class="form-row">
+        <label for="node-input-url"><i class="icon-tag"></i> Streamserver URL</label>
+        <input type="text" id="node-input-url" placeholder="https://">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="mic-stream">
+    <p>Streams an microphone audio stream to a url via socketio</p>
+</script>

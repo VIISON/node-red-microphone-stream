@@ -1,0 +1,27 @@
+{
+  "name": "node-red-pickware-mic-stream",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-sonos-voice-streaming": "git+https://github.com/svenmuennich/nodo-sonos-voice-streaming.git",
+    "node-ssdp": "^4.0.0",
+    "ts-node": "^7.0.1"
+  },
+  "node-red": {
+    "nodes": {
+      "pickware-mic-stream": "build/index.js"
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.12",
+    "@types/node-red": "^0.17.3",
+    "ts-loader": "^5.3.1",
+    "typescript": "^3.2.2"
+  }
+}
