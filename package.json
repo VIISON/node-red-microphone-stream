@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-sonos-voice-streaming": "git+https://github.com/thomasnordquist/node-sonos-voice-streaming.git",
+    "node-sonos-voice-streaming": "git+https://github.com/svenmuennich/node-sonos-voice-streaming.git",
     "node-ssdp": "^4.0.0",
     "ts-node": "^7.0.1"
   },

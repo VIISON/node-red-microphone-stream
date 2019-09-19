@@ -1,4 +1,4 @@
-import { client as VoiceStreamingClient, eventNames } from 'node-sonos-voice-streaming'
+import { client as VoiceStreamingClient, eventTopics } from 'node-sonos-voice-streaming'
 
 import { Red } from 'node-red'
 import { existsSync } from 'fs'
@@ -13,7 +13,14 @@ module.exports = function(RED) {
 
         const client = new VoiceStreamingClient(config.url)
         console.log('connecting to ' + config.url)
-        client.on(eventNames.audioLiveStream.ready, () => {
+        client.socket.on('authenticate', () => {
+            console.log('Authenticating with server...');
+            client.socket.emit('authentication', {
+                username: config.username,
+                password: config.password,
+            });
+        });
+        client.socket.on(eventTopics.audioLiveStream.ready, () => {
             if (!on) {
                 return
             }

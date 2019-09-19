@@ -10,7 +10,14 @@ module.exports = function (RED) {
         var node = this;
         var client = new node_sonos_voice_streaming_1.client(config.url);
         console.log('connecting to ' + config.url);
-        client.on(node_sonos_voice_streaming_1.eventNames.audioLiveStream.ready, function () {
+        client.socket.on('authenticate', function () {
+            console.log('Authenticating with server...');
+            client.socket.emit('authentication', {
+                username: config.username,
+                password: config.password,
+            });
+        });
+        client.socket.on(node_sonos_voice_streaming_1.eventTopics.audioLiveStream.ready, function () {
             if (!on) {
                 return;
             }
