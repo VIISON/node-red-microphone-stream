@@ -31,14 +31,6 @@ module.exports = function (RED) {
             var value = parseInt(msg.payload, 10);
             if (value === 1) {
                 console.log("start");
-                // let p = spawn('rec', '/tmp/noise-audio.wav'.split(' '));
-                // setTimeout(() => {
-                //     p.kill("SIGTERM")
-                //     p.once('exit', () => {
-                //         console.log('create noise profile')
-                //         spawn('sox', '/tmp/noise-audio.wav -n noiseprof /tmp/noise.prof'.split(' '))
-                //     });
-                // }, 500)
                 on = true;
                 client.startStream();
             }
